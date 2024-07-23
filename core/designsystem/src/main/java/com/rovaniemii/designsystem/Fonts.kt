@@ -20,6 +20,11 @@ val Title = TextStyle(
     fontSize = 20.sp,
 )
 
+val PreviewTitle = TextStyle(
+    fontFamily = NanumGothicBold,
+    fontSize = 16.sp,
+)
+
 val Body = TextStyle(
     fontFamily = NanumGothic,
     fontSize = 14.sp,

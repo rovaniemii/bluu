@@ -10,9 +10,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            com.rovaniemii.designsystem.BluuTheme {
-
-            }
+            MainScreen()
         }
     }
 }
