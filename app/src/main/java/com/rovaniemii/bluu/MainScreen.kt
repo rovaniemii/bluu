@@ -1,11 +1,8 @@
 package com.rovaniemii.bluu
 
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -13,25 +10,28 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.rovaniemii.bluu.ui.NotePreviewView
 import com.rovaniemii.data.NotePreviewData
+import com.rovaniemii.designsystem.VerticalGridView
 
 @Composable
 fun MainScreen(
     modifier: Modifier = Modifier,
     notePreviews: List<NotePreviewData>? = null,
 ) {
-    Column(
-        modifier = modifier
-            .padding(
-                horizontal = 8.dp,
-                vertical = 10.dp,
-            )
-            .verticalScroll(rememberScrollState()),
-    ) {
-        notePreviews?.forEachIndexed { index, notePreviewData ->
+    notePreviews?.let {
+        VerticalGridView(
+            modifier = modifier,
+            cellsSize = 2,
+            items = notePreviews,
+        ) { item, index ->
             NotePreviewView(
-                title = notePreviewData.title,
-                date = notePreviewData.date,
-                image = notePreviewData.url,
+                modifier = Modifier
+                    .padding(
+                        vertical = 6.dp,
+                        horizontal = 8.dp,
+                    ),
+                title = item.title,
+                date = item.date,
+                image = item.url,
             )
 
             if (notePreviews.lastIndex > index) {
@@ -41,9 +41,10 @@ fun MainScreen(
     }
 }
 
+
 @Preview
 @Composable
-private fun PreviewMainScreen(){
+private fun PreviewMainScreen() {
     Surface {
         MainScreen(
             notePreviews = listOf(

@@ -39,29 +39,31 @@ fun NotePreviewView(
     Column(
         modifier = modifier
             .background(
-                shape = RoundedCornerShape(16.dp),
+                shape = RoundedCornerShape(10.dp),
                 color = White,
             )
             .border(
                 width = 1.dp,
                 color = GrayBolder,
-                shape = RoundedCornerShape(16.dp),
-            )
-            .padding(
-                vertical = 10.dp,
-                horizontal = 12.dp,
+                shape = RoundedCornerShape(10.dp),
             )
     ) {
         AsyncImage(
-            modifier = modifier
+            modifier = Modifier
                 .background(
-                    shape = RoundedCornerShape(16.dp),
+                    shape = RoundedCornerShape(
+                        topStart = 10.dp,
+                        topEnd = 10.dp,
+                    ),
                     color = ImageBackground,
                 )
                 .border(
                     width = 1.dp,
                     color = Color.White,
-                    shape = RoundedCornerShape(16.dp),
+                    shape = RoundedCornerShape(
+                        topStart = 10.dp,
+                        topEnd = 10.dp,
+                    ),
                 )
                 .aspectRatio(1.5f),
             model = ImageRequest.Builder(LocalContext.current)
@@ -78,12 +80,8 @@ fun NotePreviewView(
 
         Column(
             modifier = Modifier
-                .padding(
-                    horizontal = 8.dp,
-                )
+                .padding(8.dp)
         ) {
-            Spacer(modifier = Modifier.height(10.dp))
-
             Text(
                 text = title,
                 style = PreviewTitle,
